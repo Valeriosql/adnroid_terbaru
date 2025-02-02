@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Tugas_pakRian__1</string>
+    <string name="title">My Applican</string>
+    <string name="username">Velerio Antoni </string>
+    <string name="exit">Keluar</string>
+    <string name="bio">Belajar di kelas 12 RPL 1. Berikut link tentang saya dan link kontak media sosial saya</string>
+    <string name="section1">Target Project untuk semester ini:</string>
+    <string name="item1">Project 1 : Project Pertama saya adalah Kalkulator</string>
+    <string name="item2">Project 2 : Pembuatan Desain dan Pengkodean Alur Program dalam sebuah Aplikasi Mobile</string>
+    <string name="item3">Project 3 : Pembuatan aplikasi dengan menerapkan teknik pengolahan input user</string>
+    <string name="item4">Project 4 : Pembuatan aplikasi mobile dengan teknik desain aplikasi lanjutan</string>
+    <string name="item5">Project 5 : Pembuatan aplikasi mobile dengan menerapkan basis data SQL lite</string>
+    <string name="copyright">Pemgrograman Perangkat Bergerak - Semester - SMKN 24 Jakarta@2025</string>
+</resources>
