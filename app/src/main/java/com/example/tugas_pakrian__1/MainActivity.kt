@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.tugas_pakrian__1.databinding.ActivityMainBinding
 
 
 
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var extbtn: Button
     private lateinit var gotoCalculatorBtn: Button
     private lateinit var dbHelper: DatabaseHelper
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,8 +25,22 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
 
-//        binding =ActivitySigupBinding.inflate(layoutInflater)
+//        binding =ActivityMainBinding.inflate(layoutInflater)
 //        setContentView(binding.root);
+//
+//        binding.addButton.setOnClickListener{
+//            val intent =Intent(this,AddNote::class.java)
+//            startActivity(intent)
+//        }
+
+
+
+
+
+
+
+
+
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
@@ -43,6 +59,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     // Pindahkan fungsi ini ke luar `onCreate`
     fun goToCalculator(view: View) {
         val intent = Intent(this, kalkulator::class.java)
+        startActivity(intent)
+    }
+
+    fun goToNotes(view: View) {
+        val intent = Intent(this,HNote::class.java)
         startActivity(intent)
     }
 
