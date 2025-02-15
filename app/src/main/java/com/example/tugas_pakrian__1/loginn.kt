@@ -2,11 +2,13 @@ package com.example.tugas_pakrian__1
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Patterns
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 
 class loginn : AppCompatActivity() {
     private lateinit var dbHelper: DatabaseHelper
@@ -17,9 +19,11 @@ class loginn : AppCompatActivity() {
 
         dbHelper = DatabaseHelper(this)
 
-        // Find views dari layout
+        // Ambil elemen dari layout
         val usernameEditText = findViewById<TextInputEditText>(R.id.username)
         val passwordEditText = findViewById<TextInputEditText>(R.id.password)
+        val usernameLayout = findViewById<TextInputLayout>(R.id.username_layout)
+        val passwordLayout = findViewById<TextInputLayout>(R.id.password_layout)
         val loginButton = findViewById<MaterialButton>(R.id.login_button)
         val signupLink = findViewById<TextView>(R.id.signup_link)
 
@@ -27,23 +31,43 @@ class loginn : AppCompatActivity() {
             val username = usernameEditText.text?.toString()?.trim() ?: ""
             val password = passwordEditText.text?.toString()?.trim() ?: ""
 
-            if (username.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Please enter both username and password", Toast.LENGTH_SHORT).show()
+            // Reset error
+            usernameLayout.error = null
+            passwordLayout.error = null
+
+            if (!isValidUsername(username)) {
+                usernameLayout.error = "Username harus minimal 6 karakter!"
+                return@setOnClickListener
+            }
+
+            if (!isValidPassword(password)) {
+                passwordLayout.error = "Password harus minimal 6 karakter!"
                 return@setOnClickListener
             }
 
             if (dbHelper.readUser(username, password)) {
-                Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Login Berhasil!", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
             } else {
-                Toast.makeText(this, "Invalid Username or Password", Toast.LENGTH_SHORT).show()
+                usernameLayout.error = "Username atau Password salah!"
+                passwordLayout.error = "Silakan coba lagi."
             }
         }
 
-        // Menggunakan signup_link dari layout bukan signup_button
+        // Pindah ke halaman Signup
         signupLink.setOnClickListener {
             startActivity(Intent(this, signup::class.java))
         }
+    }
+
+    // Validasi username minimal 6 karakter
+    private fun isValidUsername(username: String): Boolean {
+        return username.length >= 6
+    }
+
+    // Validasi password minimal 6 karakter
+    private fun isValidPassword(password: String): Boolean {
+        return password.length >= 6
     }
 }

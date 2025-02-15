@@ -67,6 +67,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         startActivity(intent)
     }
 
+    fun goToBook(view: View) {
+        val intent = Intent(this,HBook::class.java)
+        startActivity(intent)
+    }
+
     override fun onClick(v: View?) {
         if (v?.id == R.id.exitbtn) {
             finish()

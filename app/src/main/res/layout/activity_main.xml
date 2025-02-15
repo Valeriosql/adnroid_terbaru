@@ -234,13 +234,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:onClick="goToBook"
                 android:padding="8dp">
 
                 <ImageView
                     android:id="@+id/imageView16"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
-                    android:src="@drawable/info3" />
+                    android:src="@drawable/book" />
 
                 <TextView
                     android:id="@+id/textView8"
@@ -249,7 +250,7 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:paddingStart="8dp"
-                    android:text="@string/item1"
+                    android:text="@string/item3"
                     android:textSize="15sp" />
             </LinearLayout>
 
